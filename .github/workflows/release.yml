@@ -1,0 +1,73 @@
+name: Release
+
+# Push a tag such as typescript/v0.1.0, python/v0.1.0 or go/v0.1.0.
+on:
+  push:
+    tags:
+      - "typescript/v*"
+      - "python/v*"
+      - "go/v*"
+
+permissions:
+  contents: read
+
+jobs:
+  npm:
+    if: startsWith(github.ref_name, 'typescript/v')
+    runs-on: ubuntu-latest
+    environment: npm
+    permissions:
+      contents: read
+      id-token: write # npm trusted publishing and provenance
+    defaults:
+      run:
+        working-directory: typescript
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          registry-url: https://registry.npmjs.org
+      - name: Check the tag matches package.json
+        run: test "typescript/v$(node -p 'require("./package.json").version')" = "$GITHUB_REF_NAME"
+      - run: npm ci
+      - run: npm test
+      - run: npm publish --access public --provenance
+
+  pypi:
+    if: startsWith(github.ref_name, 'python/v')
+    runs-on: ubuntu-latest
+    environment: pypi
+    permissions:
+      contents: read
+      id-token: write # PyPI trusted publishing
+    defaults:
+      run:
+        working-directory: python
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: Check the tag matches pyproject.toml
+        run: test "python/v$(python -c 'import tomllib;print(tomllib.load(open("pyproject.toml","rb"))["project"]["version"])')" = "$GITHUB_REF_NAME"
+      - run: pip install -e . build
+      - run: python -m unittest discover -s tests
+      - run: python -m build
+      - uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          packages-dir: python/dist
+
+  go:
+    if: startsWith(github.ref_name, 'go/v')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: stable
+      - run: cd go && go test ./...
+      - name: Ask the Go module proxy to index the release
+        run: |
+          version="${GITHUB_REF_NAME#go/}"
+          curl -fsS "https://proxy.golang.org/github.com/skillgild/sdks/go/@v/${version}.info"

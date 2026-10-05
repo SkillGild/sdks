@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640" width="1280" height="640" role="img" aria-labelledby="t d">
+  <title id="t">SkillGild SDKs</title>
+  <desc id="d">Official TypeScript, Python and Go clients for SkillGild, the marketplace for hosted AI agent skills.</desc>
+  <rect width="1280" height="640" fill="#1A1A18"/>
+  <g transform="translate(96 150) scale(5.4)">
+    <rect width="30" height="30" rx="7" fill="#1A1A18"/>
+    <rect x="1" y="1" width="28" height="28" rx="6.5" fill="none" stroke="#F0EEE6" stroke-opacity=".14"/>
+    <path d="M8.5 21.5 14 8.5" stroke="#E68462" stroke-width="3.2" stroke-linecap="round"/>
+    <rect x="17" y="9" width="6" height="14" rx="1.5" fill="#F0EEE6"/>
+  </g>
+  <g font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" fill="#F0EEE6">
+    <text x="330" y="250" font-size="84" font-weight="700" letter-spacing="-2">SkillGild SDKs</text>
+    <text x="332" y="318" font-size="34" fill-opacity=".72">Run hosted AI agent skills from your code</text>
+    <text x="332" y="372" font-size="28" fill="#E68462">TypeScript · Python · Go</text>
+  </g>
+  <text x="96" y="560" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="26" fill="#F0EEE6" fill-opacity=".55">npm i @skillgild/sdk   ·   pip install skillgild   ·   skillgild.dev</text>
+</svg>
