@@ -22,8 +22,6 @@ Official client libraries for **[SkillGild](https://skillgild.dev/?utm_source=gi
 | Python | [`skillgild`](https://pypi.org/project/skillgild/) | [`python/`](python) |
 | Go | [`github.com/skillgild/sdks/go`](https://pkg.go.dev/github.com/skillgild/sdks/go/skillgild) | [`go/`](go) |
 
-> **Status:** `0.1.0`, not yet on npm or PyPI. Until the first release, install from this repository (see each folder's README).
-
 ## Install
 
 ```sh

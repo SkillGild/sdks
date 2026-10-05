@@ -8,8 +8,6 @@ Official TypeScript and JavaScript client for **[SkillGild](https://skillgild.de
 npm install @skillgild/sdk
 ```
 
-Until the first npm release, build from source: `git clone https://github.com/SkillGild/sdks && cd sdks/typescript && npm install && npm run build`.
-
 ## Usage
 
 ```ts

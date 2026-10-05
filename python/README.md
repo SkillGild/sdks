@@ -8,8 +8,6 @@ Official Python client for **[SkillGild](https://skillgild.dev/?utm_source=pypi&
 pip install skillgild
 ```
 
-Until the first PyPI release: `pip install "git+https://github.com/SkillGild/sdks.git#subdirectory=python"`.
-
 ## Usage
 
 ```python
