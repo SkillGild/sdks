@@ -98,8 +98,15 @@ test("rejects base URLs with credentials or other schemes", () => {
 });
 
 test("times out a hung request", async () => {
+  // A real request holds a socket open; this fake one doesn't, so keep the event loop alive
+  // (Node 20 does not let AbortSignal.timeout's timer do that).
+  const keepAlive = setTimeout(() => {}, 5_000);
   const fetch = (_url, init) => new Promise((_, reject) => init.signal.addEventListener("abort", () => reject(init.signal.reason)));
-  await assert.rejects(new SkillGildClient({ fetch, timeoutMs: 20 }).getSkill("a"), { name: "TimeoutError" });
+  try {
+    await assert.rejects(new SkillGildClient({ fetch, timeoutMs: 20 }).getSkill("a"), { name: "TimeoutError" });
+  } finally {
+    clearTimeout(keepAlive);
+  }
 });
 
 test("the CommonJS build loads", () => {
