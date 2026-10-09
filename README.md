@@ -10,7 +10,7 @@
   <a href="https://pkg.go.dev/github.com/skillgild/sdks/go/skillgild"><img alt="Go reference" src="https://pkg.go.dev/badge/github.com/skillgild/sdks/go/skillgild.svg"></a>
   <a href="https://github.com/SkillGild/sdks/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/SkillGild/sdks/actions/workflows/ci.yml/badge.svg"></a>
   <a href="LICENSE"><img alt="MIT license" src="https://img.shields.io/badge/license-MIT-1A1A18"></a>
-  <a href="https://m8ven.ai/mcp/skillgild-sdks-1jl6xu?s=readme"><img alt="M8ven Score" src="https://m8ven.ai/badge/mcp/skillgild-sdks-1jl6xu"></a>
+  <a href="https://m8ven.ai/mcp/skillgild/sdks?s=readme"><img alt="M8ven Score" src="https://m8ven.ai/badge/mcp/skillgild/sdks"></a>
 </p>
 
 # SkillGild SDKs for TypeScript, Python and Go
